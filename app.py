@@ -23,9 +23,26 @@ def add():
     manager.add_expense(expense)
 
     return redirect("/")
+    @app.route("/delete/<int:index>", methods=["POST"])
+    def delete(index):
+        with open("expenses.csv", "r") as file:
+            lines = file.readlines()
 
+    header = lines[0]
+    data = lines[1:]
+
+    if 0 <= index < len(data):
+        data.pop(index)
+
+    with open("expenses.csv", "w") as file:
+        file.write(header)
+        file.writelines(data)
+
+    return redirect("/")
+    
 import os
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+
 
