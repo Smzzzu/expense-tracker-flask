@@ -12,20 +12,28 @@
         <button type="submit">Add</button>
     </form>
 
-    <h2>All Expenses</h2>
-    <table border="1">
-        <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Category</th>
-        </tr>
-        {% for e in expenses %}
-        <tr>
-            <td>{{ e[0] }}</td>
-            <td>{{ e[1] }}</td>
-            <td>{{ e[2] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+  <h2>All Expenses</h2>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Category</th>
+    <th>Action</th>
+  </tr>
+
+  {% for e in expenses %}
+  <tr>
+    <td>{{ e[0] }}</td>
+    <td>{{ e[1] }}</td>
+    <td>{{ e[2] }}</td>
+    <td>
+      <form action="/delete/{{ loop.index0 }}" method="post">
+        <button type="submit">Delete</button>
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 </body>
 </html>
