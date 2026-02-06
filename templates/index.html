@@ -28,12 +28,10 @@
     <td>{{ e[1] }}</td>
     <td>{{ e[2] }}</td>
     <td>
-      <form action="/delete/{{ loop.index0 }}" method="post">
-        <button type="submit">Delete</button>
-      </form>
+     <a href="/delete/{{ loop.index0 }}" style="color:red;">Delete</a>
     </td>
   </tr>
-  {% endfor %}
+    {% endfor %}
 </table>
 </body>
 </html>
