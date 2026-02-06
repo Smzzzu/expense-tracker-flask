@@ -13,7 +13,8 @@ def index():
             expenses.append(line.strip().split(","))
     return render_template("index.html", expenses=expenses)
 
-@app.route("/add", methods=["POST"])
+@app.route("/delete/<int:index>", methods=["POST", "GET"])
+
 def add():
     title = request.form["title"]
     amount = request.form["amount"]
@@ -44,5 +45,6 @@ import os
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+
 
 
